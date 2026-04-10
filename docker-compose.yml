@@ -1,0 +1,22 @@
+services:
+  postgres-iot:
+    container_name: postgres-iot
+    image: postgres
+    environment:
+      POSTGRES_USER: raghav
+      POSTGRES_PASSWORD: raghav
+      PGDATA: /data/postgres
+    volumes:
+      - postgres-iot:/data/postgres
+    ports:
+      - "5435:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres-iot:
